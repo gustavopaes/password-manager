@@ -37,6 +37,7 @@ You can change it at `./src/encryptor.js` file.
 
 ## To-do
 
+- [ ] update data
 - [ ] block ip after wrong password
 - [ ] improve log messages
 - [ ] improve front-end templates
