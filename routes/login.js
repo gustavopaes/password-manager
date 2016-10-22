@@ -49,8 +49,8 @@ module.exports = function(req, res) {
         redirUser(res);
       } else {
         // valida usuário e senha que estão salvos no cookie
-        let [login, passwd] = req.session.get('user').split(';');
-        validUserCredential(login, passwd, req, res);
+        let userData = req.session.get('user').split(';');
+        validUserCredential(userData[0], userData[1], req, res);
       }
     } else {
       if(isPOST(req) === false) {
