@@ -15,7 +15,7 @@ const getUserData = login => {
     // valida se o arquivo existe e está disponível para leitura
     fs.accessSync(filePath, fs.constants && fs.constants.R_OK || fs.R_OK);
   } catch(e) {
-    console.log('\tgetUserData', e);
+    global.logger.log('\tgetUserData', e);
     return {
       code: 404
     };
@@ -29,7 +29,7 @@ const getUserData = login => {
       data: data
     };
   } catch(e) {
-    console.log('\tgetUserData', filePath, e);
+    global.logger.log('\tgetUserData', filePath, e);
     return {
       code: 501
     };
@@ -47,7 +47,7 @@ const saveUserData = (login, data) => {
       encoding: 'utf8'
     });
   } catch(e) {
-    console.log('\tsaveUserData', e);
+    global.logger.log('\tsaveUserData', e);
     return {
       code: 403
     };
@@ -112,7 +112,7 @@ class User {
 
         // erro, usuário não existe
         .catch(e => {
-          console.log('[error] login error: ', e);
+          global.logger.error('login error: ', e);
           reject(e);
         });
     });

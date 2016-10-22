@@ -5,6 +5,12 @@ const crypto = require('crypto');
 const NodeSession = require('node-session');
 const file = new static.Server('./public');
 
+// Log messages and errors
+const Console = require('console').Console;
+const output = fs.createWriteStream('./logs/stdout.log');
+const errorOutput = fs.createWriteStream('./logs/stderr.log');
+global.logger = new Console(output, errorOutput);
+
 const hostname  = '127.0.0.1';
 const port = 3443;
 
@@ -34,7 +40,7 @@ const options = {
 
 // Request trigger
 const doRoute = (req, res) => {
-  console.log('->', req.url);
+  logger.log('->', req.url);
 
   session.startSession(req, res, () => {});
 
@@ -76,5 +82,6 @@ const doRoute = (req, res) => {
 
 // Rotas
 https.createServer(options, doRoute).listen(port, hostname, () => {
+  logger.log('up: https://%s:%d', hostname, port);
   console.log('up: https://%s:%d', hostname, port);
 });
