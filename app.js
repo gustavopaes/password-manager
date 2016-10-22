@@ -31,6 +31,7 @@ const session = new NodeSession({
   lifetime: 30 * 1000,
   driver: 'memory',
   cookie: 'session',
+  secure: true,
   encrypt: true
 });
 
