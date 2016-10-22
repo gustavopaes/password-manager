@@ -25,6 +25,13 @@ Data are encrypted using aes256 cipher.
 
 You can change it at `./src/encryptor.js` file.
 
+## To-do
+
+- [ ] block ip after wrong password
+- [ ] improve log messages
+- [ ] improve front-end templates
+- [x] write logs in files
+
 ## Disclaimer
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
