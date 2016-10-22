@@ -3,7 +3,7 @@ NodeJS based web server password manager. You can use it to save and encrypt any
 
 ## Creating user data
 
-First of all, you need to an create user and password.
+First of all, you need to create an create user and password.
 
 ```bash
 node create-user.js login password
@@ -28,6 +28,7 @@ You can change host and port using environment values:
 ```bash
 HOSTNAME=mydomain.com PORT=443 node app
 ```
+To run in prod mode, you need to put your certificates at `./certs` directory, with `cert.pem` and `cert.key` names.
 
 ## Crypto
 
@@ -37,6 +38,7 @@ You can change it at `./src/encryptor.js` file.
 
 ## To-do
 
+- [ ] update data
 - [ ] block ip after wrong password
 - [ ] improve log messages
 - [ ] improve front-end templates
