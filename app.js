@@ -1,9 +1,11 @@
+'use strict';
+
 const fs = require('fs');
 const https = require('https');
-const static = require('node-static');
+const staticContent = require('node-static');
 const crypto = require('crypto');
 const NodeSession = require('node-session');
-const file = new static.Server('./public');
+const file = new staticContent.Server('./public');
 
 // Log messages and errors
 const Console = require('console').Console;

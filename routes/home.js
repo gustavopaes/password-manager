@@ -1,3 +1,5 @@
+'use strict';
+
 // view
 const View = require('../src/view.js')('login');
 

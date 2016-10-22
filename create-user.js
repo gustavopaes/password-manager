@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const encryptor = require('./src/encryptor');
 const argv = process.argv.slice(2);

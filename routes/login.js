@@ -1,3 +1,5 @@
+'use strict';
+
 const User = require('../src/user.js');
 const readPostData = require('../src/utils.js').readPostData;
 const isPOST = require('../src/utils.js').isPOST;
