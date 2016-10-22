@@ -13,8 +13,8 @@ const output = fs.createWriteStream('./logs/stdout.log');
 const errorOutput = fs.createWriteStream('./logs/stderr.log');
 global.logger = new Console(output, errorOutput);
 
-const hostname  = '127.0.0.1';
-const port = 3443;
+const hostname  = process.env.HOSTNAME || '127.0.0.1';
+const port = process.env.PORT || 3443;
 
 // user
 const User = require('./src/user.js');
@@ -35,10 +35,18 @@ const session = new NodeSession({
 });
 
 // HTTPS certs
-const options = {
-  key: fs.readFileSync('certs/cert.key'),
-  cert: fs.readFileSync('certs/cert.pem')
-};
+let options;
+if(process.env.DEVELOPMENT) {
+  options = {
+    key: fs.readFileSync('self-certs/cert.key'),
+    cert: fs.readFileSync('self-certs/cert.pem')
+  };
+} else {
+  options = {
+    key: fs.readFileSync('certs/cert.key'),
+    cert: fs.readFileSync('certs/cert.pem')
+  };
+}
 
 // Request trigger
 const doRoute = (req, res) => {

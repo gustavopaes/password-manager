@@ -14,10 +14,20 @@ You can create many users.
 ## Run the server
 
 ```bash
+# To up to dev
+DEVELOPMENT=1 node app
+
+# To up in prod
 node app
 ```
 
 The server will up on HTTPS protocol, port 3443.
+
+You can change host and port using environment values:
+
+```bash
+HOSTNAME=mydomain.com PORT=443 node app
+```
 
 ## Crypto
 
