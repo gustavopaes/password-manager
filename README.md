@@ -3,7 +3,7 @@ NodeJS based web server password manager. You can use it to save and encrypt any
 
 ## Creating user data
 
-First of all, you need to an create user and password.
+First of all, you need to create an create user and password.
 
 ```bash
 node create-user.js login password
