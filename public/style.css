@@ -187,6 +187,8 @@ h1 {
   text-shadow: 0 0 1em #000;
 }
 
-.section-add textarea:hover {
-  text-shadow: 0 0 0 #000;
+.section-add textarea:hover,
+.section-add textarea:focus {
+  color: #000;
+  text-shadow: none;
 }
