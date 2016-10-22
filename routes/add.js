@@ -29,10 +29,8 @@ module.exports = function(req, res) {
       })
       // erro ou usuário inválido
       .catch(e => {
-        setTimeout(function() {
-          res.statusCode = 403;
-          res.end('403 not allowed');
-        }, parseInt(Math.random() * 10) * 1000);
+        res.statusCode = 403;
+        res.end('403 not allowed');
       });
   });
 }
