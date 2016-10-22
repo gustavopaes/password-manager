@@ -28,6 +28,7 @@ You can change host and port using environment values:
 ```bash
 HOSTNAME=mydomain.com PORT=443 node app
 ```
+To run in prod mode, you need to put your certificates at `./certs` directory, with `cert.pem` and `cert.key` names.
 
 ## Crypto
 
