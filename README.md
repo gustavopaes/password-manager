@@ -17,7 +17,7 @@ You can create many users.
 node app
 ```
 
-The server will up on port 3000.
+The server will up on HTTPS protocol, port 3443.
 
 ## Crypto
 
