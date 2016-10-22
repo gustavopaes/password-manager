@@ -1,0 +1,13 @@
+body {
+  font-style: 'Arial';
+  font-size: 16px;
+}
+
+label {
+  display: block;
+  padding: 10px 0;
+}
+
+label strong {
+  display: block;
+}

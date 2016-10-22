@@ -1,0 +1,39 @@
+{{> header}}
+  <h1>Olá {{ login }} <small><a href="/logout">(sair)</a></small></h1>
+
+  {{#sessionMessage}}
+    <p class="sessionMessage">{{ sessionMessage }}</p>
+  {{/sessionMessage}}
+
+  <form name="create" action="/add" method="POST" onsubmit="return SendNewPasswd();">
+    <input type="hidden" name="user.login" value="{{login}}">
+
+    <label for="serviceName">
+      <strong>Nome do site/serviço:</strong>
+      <input name="service.name" type="text" value="" id="serviceName" />
+    </label>
+
+    <label for="servicePassword">
+      <strong>Senha do serviço:</strong>
+      <textarea name="service.passwd" id="servicePassword"></textarea>
+    </label>
+
+    <hr />
+
+    <label for="userPasswd">
+      <strong>Sua senha:</strong>
+      <input name="user.passwd" type="password" value="" id="userPasswd" />
+    </label>
+
+    <button type="submit">Criar</button>
+  </form>
+
+  <hr />
+
+  <dl>
+    {{#data.services}}
+      <dt>{{{ name }}}</dt>
+        <dd><pre>{{ passwd }}</pre></dd>
+    {{/data.services}}
+  </dl>
+{{> footer}}

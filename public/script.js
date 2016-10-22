@@ -1,0 +1,42 @@
+
+// faz post ajax para registrar nova senha
+function SendNewPasswd() {
+  var form = document.querySelector('form[name="create"]');
+
+  if(!form) {
+    return false;
+  }
+
+  // valida os dados
+  if(!form['service.name'].value || !form['service.passwd'].value || !form['user.passwd'].value) {
+    alert('Todos os campos são obrigatórios!');
+    return false;
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/add', true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState == 4) {
+      alert(xhr.responseText);
+
+      if(xhr.status == 200) {
+        form['service.name'].value = '';
+        form['service.passwd'].value = '';
+      }
+
+      form['user.passwd'].value = '';
+    }
+  }
+
+  var params = [];
+  params.push(`service.name=${encodeURIComponent(form['service.name'].value)}`);
+  params.push(`service.passwd=${encodeURIComponent(form['service.passwd'].value)}`);
+  params.push(`user.login=${encodeURIComponent(form['user.login'].value)}`);
+  params.push(`user.passwd=${encodeURIComponent(form['user.passwd'].value)}`);
+
+  xhr.send(params.join('&'));
+
+  return false;
+}

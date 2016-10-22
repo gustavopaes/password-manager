@@ -1,0 +1,18 @@
+{{> header}}
+  <h1>{{ title }}!</h1>
+
+  <form name="login" action="/login" method="POST">
+    <label for="userLogin">
+      <strong>Login:</strong>
+      <input name="user.login" type="text" value="" id="userLogin" />
+    </label>
+
+    <label for="userPasswd">
+      <strong>Senha:</strong>
+      <input name="user.passwd" type="password" value="" id="userPasswd" />
+    </label>
+
+    <button type="submit">Login</button>
+
+  </form>
+{{> footer}}
