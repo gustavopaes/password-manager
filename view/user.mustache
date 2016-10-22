@@ -1,39 +1,43 @@
 {{> header}}
-  <h1>Olá {{ login }} <small><a href="/logout">(sair)</a></small></h1>
 
-  {{#sessionMessage}}
-    <p class="sessionMessage">{{ sessionMessage }}</p>
-  {{/sessionMessage}}
 
-  <form name="create" action="/add" method="POST" onsubmit="return SendNewPasswd();">
-    <input type="hidden" name="user.login" value="{{login}}">
+  <section class="section-add">
+    <h1>Service data</h1>
+    <form name="create" action="/add" method="POST" onsubmit="return SendNewPasswd();">
+      <input type="hidden" name="user.login" value="{{login}}">
 
-    <label for="serviceName">
-      <strong>Nome do site/serviço:</strong>
-      <input name="service.name" type="text" value="" id="serviceName" />
-    </label>
+      <label for="serviceName">
+        <input name="service.name" spellcheck="false" type="text" value="" id="serviceName" placeholder="service name" />
+      </label>
 
-    <label for="servicePassword">
-      <strong>Senha do serviço:</strong>
-      <textarea name="service.passwd" id="servicePassword"></textarea>
-    </label>
+      <label for="servicePassword">
+        <textarea name="service.passwd" spellcheck="false" id="servicePassword" rows="10" placeholder="password or text"></textarea>
+      </label>
 
-    <hr />
+      <label for="userPasswd">
+        <input name="user.passwd" type="password" value="" id="userPasswd" placeholder="{{ login }} password" />
+      </label>
 
-    <label for="userPasswd">
-      <strong>Sua senha:</strong>
-      <input name="user.passwd" type="password" value="" id="userPasswd" />
-    </label>
+      <button type="submit">Criar</button>
+    </form>
+  </section>
 
-    <button type="submit">Criar</button>
-  </form>
+  <section class="section-sidebar">
+    <span class="section-sidebar-bg"></span>
+    <h1>{{ login }} <small><a href="/logout">(logout)</a></small></h1>
 
-  <hr />
+    <!--<button>Add new data</button>-->
 
-  <dl>
-    {{#data.services}}
-      <dt>{{{ name }}}</dt>
-        <dd><pre>{{ passwd }}</pre></dd>
-    {{/data.services}}
-  </dl>
+    <ul>
+      {{#data.services}}
+        <li onclick="showServiceData(this);">
+          <a>{{ name }}</a>
+          <input name="service.name" type="hidden" value="{{ name }}" />
+          <input name="service.passwd" type="hidden" value="{{ passwd }}" />
+        </li>
+      {{/data.services}}
+    </ul>
+  </section>
+
+
 {{> footer}}

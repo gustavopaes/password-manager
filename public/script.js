@@ -1,4 +1,3 @@
-
 // faz post ajax para registrar nova senha
 function SendNewPasswd() {
   var form = document.querySelector('form[name="create"]');
@@ -39,4 +38,20 @@ function SendNewPasswd() {
   xhr.send(params.join('&'));
 
   return false;
+}
+
+function showServiceData(itemElement) {
+  var data = {
+    'service.name': itemElement.querySelector('input[name="service.name"]').value,
+    'service.passwd': itemElement.querySelector('input[name="service.passwd"]').value
+  };
+
+  var form = document.querySelector('form[name="create"]');
+
+  if(!form) {
+    return false;
+  }
+
+  form['service.name'].value = data['service.name'];
+  form['service.passwd'].value = data['service.passwd'];
 }
