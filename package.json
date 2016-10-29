@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "start-dev": "DEVELOPMENT=1 node app.js"
   },
   "author": "Gustavo Paes <gustavo.paes@gmail.com> (http://gustavopaes.net)",
   "license": "ISC",

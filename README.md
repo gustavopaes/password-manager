@@ -36,6 +36,18 @@ Data are encrypted using aes256 cipher.
 
 You can change it at `./src/encryptor.js` file.
 
+## Docker
+
+You can run it (just in production mode) with Docker or docker-compose.
+
+    # Just with docker
+    docker build -t password-manager .
+    docker run -it --rm --name password-manager-instance -v -p 443:3443 "$PWD":/app password-manager
+
+    # With docker-compose
+    docker-compose up -d
+
+
 ## To-do
 
 - [ ] update data
