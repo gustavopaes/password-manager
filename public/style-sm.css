@@ -1,0 +1,48 @@
+.section-sidebar {
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+
+  transition: width 0.2s;
+}
+
+.section-sidebar ul,
+.section-sidebar h1 {
+  min-width: 20em;
+}
+
+.section-add {
+  margin-top: 5em;
+  margin-left: 1em;
+}
+
+label[for="nav-trigger"] {
+  display: block;
+  position: absolute;
+  top: 1em;
+  left: 0;
+  margin-left: 1em;
+
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");
+  background-size: contain;
+  color: white;
+
+  transition: left 0.2s;
+
+  z-index: 2;
+}
+
+.nav-trigger:checked ~ label[for="nav-trigger"] {
+  left: 60%;
+}
+
+.nav-trigger:checked ~ .section-sidebar {
+  width: 60%;
+
+  padding-left: 1em;
+  padding-right: 1em;
+}

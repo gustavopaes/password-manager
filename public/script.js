@@ -54,4 +54,6 @@ function showServiceData(itemElement) {
 
   form['service.name'].value = data['service.name'];
   form['service.passwd'].value = data['service.passwd'];
+
+  document.querySelector('#nav-trigger').checked = false;
 }
