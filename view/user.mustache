@@ -1,6 +1,4 @@
 {{> header}}
-
-
   <section class="section-add">
     <h1>Service data</h1>
     <form name="create" action="/add" method="POST" onsubmit="return SendNewPasswd();">
@@ -26,8 +24,6 @@
     <span class="section-sidebar-bg"></span>
     <h1>{{ login }} <small><a href="/logout">(logout)</a></small></h1>
 
-    <!--<button>Add new data</button>-->
-
     <ul>
       {{#data.services}}
         <li onclick="showServiceData(this);">
@@ -38,6 +34,4 @@
       {{/data.services}}
     </ul>
   </section>
-
-
 {{> footer}}
