@@ -50,11 +50,11 @@ You can run it (just in production mode) with Docker or docker-compose.
 
 ## To-do
 
-- [ ] update data
+- [x] improve front-end templates
+- [x] write logs in files
+- [ ] remove passwords from html after logged
 - [ ] block ip after wrong password
 - [ ] improve log messages
-- [ ] improve front-end templates
-- [x] write logs in files
 
 ## Disclaimer
 
