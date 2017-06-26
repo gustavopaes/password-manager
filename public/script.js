@@ -1,6 +1,6 @@
 // faz post ajax para registrar nova senha
-function SendNewPasswd() {
-  var form = document.querySelector('form[name="create"]');
+function SendForm(button) {
+  var form = document.querySelector('form[name="manageItem"]');
 
   if(!form) {
     return false;
@@ -13,18 +13,21 @@ function SendNewPasswd() {
   }
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/add', true);
+  xhr.open('POST', button.getAttribute('data-action'), true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
   xhr.onreadystatechange = function() {
     if(xhr.readyState == 4) {
-      alert(xhr.responseText);
 
       if(xhr.status == 200) {
         form['service.name'].value = '';
         form['service.passwd'].value = '';
+        form['user.passwd'].value = '';
+
+        return location.reload();
       }
 
+      alert(xhr.responseText);
       form['user.passwd'].value = '';
     }
   }
@@ -46,7 +49,7 @@ function showServiceData(itemElement) {
     'service.passwd': itemElement.querySelector('input[name="service.passwd"]').value
   };
 
-  var form = document.querySelector('form[name="create"]');
+  var form = document.querySelector('form[name="manageItem"]');
 
   if(!form) {
     return false;

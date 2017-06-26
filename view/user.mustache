@@ -1,7 +1,7 @@
 {{> header}}
   <section class="section-add">
     <h1>Service data</h1>
-    <form name="create" action="/add" method="POST" onsubmit="return SendNewPasswd();">
+    <form name="manageItem">
       <input type="hidden" name="user.login" value="{{login}}">
 
       <label for="serviceName">
@@ -16,7 +16,9 @@
         <input name="user.passwd" type="password" value="" id="userPasswd" placeholder="{{ login }} password" />
       </label>
 
-      <button type="submit">Criar</button>
+      <button data-action="/add" onclick="SendForm(this);" type="button">Criar</button>
+      <button data-action="/update" onclick="SendForm(this);" type="button">Modificar</button>
+      <button data-action="/delete" onclick="SendForm(this);" type="button">Remover</button>
     </form>
   </section>
 

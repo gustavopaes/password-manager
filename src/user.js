@@ -127,6 +127,26 @@ class User {
     return this;
   }
 
+  update(service) {
+    let services = this.data.services || [];
+    for(let i = 0; i < services.length; i++) {
+      if(service.name === services[i].name) {
+        services[i] = service;
+        break;
+      }
+    }
+
+    return this;
+  }
+
+  delete(service) {
+    this.data.services = this.data.services.filter(item => {
+      return service.name !== item.name;
+    });
+
+    return this;
+  }
+
   commit(passwd) {
     return new Promise((resolve, reject) => {
       encryptor

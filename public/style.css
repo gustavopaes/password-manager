@@ -191,6 +191,7 @@ h1 {
 
 .section-add button {
   width: 10em;
+  display: inline-block;
 }
 
 .section-add textarea {

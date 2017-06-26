@@ -22,7 +22,9 @@ const User = require('./src/user.js');
 // Rotas
 const RouteHome = require('./routes/home.js');
 const RouteAdd = require('./routes/add.js');
-const RouteLogin = require('./routes/login.js')
+const RouteUpdate = require('./routes/update.js');
+const RouteDelete = require('./routes/delete.js');
+const RouteLogin = require('./routes/login.js');
 
 // User Session
 const session = new NodeSession({
@@ -68,6 +70,17 @@ const doRoute = (req, res) => {
     case '/add':
       RouteAdd(req, res);
     break;
+
+    // POST /update
+    case '/update':
+      RouteUpdate(req, res);
+    break;
+
+    // POST /delete
+    case '/delete':
+      RouteDelete(req, res);
+    break;
+
 
     // POST /login
     case '/login':
