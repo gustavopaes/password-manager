@@ -43,20 +43,32 @@ function SendForm(button) {
   return false;
 }
 
-function showServiceData(itemElement) {
-  var data = {
-    'service.name': itemElement.querySelector('input[name="service.name"]').value,
-    'service.passwd': itemElement.querySelector('input[name="service.passwd"]').value
+window.showServiceData = function() {};
+
+;(function token() {
+  var r = new XMLHttpRequest();
+  r.open("GET", "/token", true);
+  r.onreadystatechange = function () {
+    if (r.readyState != 4 || r.status != 200) return;
+
+    window.showServiceData = function(itemElement) {
+      var data = {
+        'service.name': itemElement.querySelector('input[name="service.name"]').value,
+        'service.passwd': itemElement.querySelector('input[name="service.passwd"]').value
+      };
+
+      var form = document.querySelector('form[name="manageItem"]');
+
+      if(!form) {
+        return false;
+      }
+
+      form['service.name'].value = data['service.name'];
+      form['service.passwd'].value = CryptoJS.AES.decrypt(data['service.passwd'], r.responseText).toString(CryptoJS.enc.Utf8);
+
+      document.querySelector('#nav-trigger').checked = false;
+    }
   };
 
-  var form = document.querySelector('form[name="manageItem"]');
-
-  if(!form) {
-    return false;
-  }
-
-  form['service.name'].value = data['service.name'];
-  form['service.passwd'].value = data['service.passwd'];
-
-  document.querySelector('#nav-trigger').checked = false;
-}
+  r.send();
+})();

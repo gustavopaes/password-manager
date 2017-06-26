@@ -81,11 +81,14 @@ const doRoute = (req, res) => {
       RouteDelete(req, res);
     break;
 
-
     // POST /login
     case '/login':
     case '/user':
       RouteLogin(req, res);
+    break;
+
+    case '/token':
+      res.end(req.session.get('token'));
     break;
 
     case '/logout':

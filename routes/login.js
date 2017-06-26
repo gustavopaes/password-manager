@@ -3,6 +3,8 @@
 const User = require('../src/user.js');
 const readPostData = require('../src/utils.js').readPostData;
 const isPOST = require('../src/utils.js').isPOST;
+const AES = require("crypto-js/aes");
+const crypto = require('crypto');
 
 // view
 const View = require('../src/view.js')('user');
@@ -12,21 +14,32 @@ const redirUser = res => {
   res.end();
 }
 
+const cryptPass = (services, randomKey) => {
+  return services.map(item => {
+    item.passwd = AES.encrypt(item.passwd, randomKey);
+    return item;
+  });
+};
+
 const validUserCredential = (login, passwd, req, res) => {
   User(login, passwd)
     // acesso liberado
     .then(user => {
       req.session.put('user', login+';'+passwd);
+      req.session.put('token', user.token);
 
       if(isPOST(req) === true) {
         // faz o redir para evitar que a senha fique exposta no network
         redirUser(res);
       }
 
+      user.data.services = cryptPass(user.data.services, user.token);
+
       res.end(View.render(user));
     })
     // erro ou usuário inválido
     .catch(e => {
+      console.log(e);
       req.session.flush();
       setTimeout(function() {
         res.statusCode = 403;

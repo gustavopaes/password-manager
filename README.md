@@ -52,7 +52,8 @@ You can run it (just in production mode) with Docker or docker-compose.
 
 - [x] improve front-end templates
 - [x] write logs in files
-- [ ] remove passwords from html after logged
+- [x] remove passwords from html after logged
+- [x] update and remove actions
 - [ ] block ip after wrong password
 - [ ] improve log messages
 

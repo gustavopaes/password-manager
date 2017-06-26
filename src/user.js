@@ -3,6 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 const encryptor = require('./encryptor');
+const crypto = require('crypto');
 
 const algorithm = 'aes256';
 const encryptorOptions = {
@@ -76,6 +77,7 @@ class User {
     let user = this;
     user.login = login;
     user.dataPath = '';
+    user.token = crypto.randomBytes(32).toString('hex');
     user.data = {};
 
     return new Promise((resolve, reject) => {
@@ -108,7 +110,7 @@ class User {
   }
 
   add(service) {
-    this.data.services = this.data.services || []
+    this.data.services = this.data.services || [];
     this.data.services.push(service);
 
     return this;

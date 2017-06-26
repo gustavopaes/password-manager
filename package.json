@@ -1,6 +1,6 @@
 {
   "name": "passwd",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "author": "Gustavo Paes <gustavo.paes@gmail.com> (http://gustavopaes.net)",
   "license": "ISC",
   "dependencies": {
+    "crypto-js": "^3.1.9-1",
     "mustache": "^2.2.1",
     "node-session": "^1.2.1",
     "node-static": "^0.7.9"
