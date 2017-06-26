@@ -78,7 +78,9 @@ class User {
     user.login = login;
     user.dataPath = '';
     user.token = crypto.randomBytes(32).toString('hex');
-    user.data = {};
+    user.data = {
+      services: []
+    };
 
     return new Promise((resolve, reject) => {
       // valida se o usuário existe
