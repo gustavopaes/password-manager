@@ -14,16 +14,6 @@ const getUserData = login => {
   let filePath = path.join('./data', login);
 
   try {
-    // valida se o arquivo existe e está disponível para leitura
-    fs.accessSync(filePath, fs.constants && fs.constants.R_OK || fs.R_OK);
-  } catch(e) {
-    global.logger.log('\tgetUserData', e);
-    return {
-      code: 404
-    };
-  }
-
-  try {
     let data = JSON.parse(fs.readFileSync(filePath, { encoding: 'utf8' }));
 
     return {
@@ -42,9 +32,6 @@ const saveUserData = (login, data) => {
   let filePath = path.join('./data', login);
 
   try {
-    // valida se o arquivo existe e está disponível para leitura
-    fs.accessSync(filePath, fs.constants && fs.constants.W_OK || fs.W_OK);
-
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), {
       encoding: 'utf8'
     });
