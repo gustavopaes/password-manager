@@ -10,7 +10,9 @@ if(argv.length != 2) {
 }
 
 encryptor
-  .encrypt('{}', path.join('./data', `${argv[0]}.dat`), argv[1])
+  .encrypt(JSON.stringify({
+    services: []
+  }), path.join('./data', `${argv[0]}.dat`), argv[1])
   .then(() => {
     console.log('User file created!');
     process.exit(0);
