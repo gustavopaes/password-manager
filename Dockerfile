@@ -1,4 +1,4 @@
-FROM node:6.9.1
+FROM node:6.11.1
 
 EXPOSE 8443
 
