@@ -1,6 +1,7 @@
 web:
   build: .
+  restart: always
   ports:
-    - "443:3443"
+    - "8444:3443"
   volumes:
     - .:/app
