@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "start-dev": "DEVELOPMENT=1 node app.js"
+    "start-dev": "DEVELOPMENT=1 node app.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Gustavo Paes <gustavo.paes@gmail.com> (http://gustavopaes.net)",
   "license": "ISC",
@@ -14,6 +16,8 @@
     "crypto-js": "^3.1.9-1",
     "mustache": "^2.2.1",
     "node-session": "^1.2.1",
-    "node-static": "^0.7.9"
-  }
+    "node-static": "^0.7.9",
+    "snyk": "^1.88.0"
+  },
+  "snyk": true
 }
